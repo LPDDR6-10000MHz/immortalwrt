@@ -1,6 +1,9 @@
 # 上游源码 https://github.com/immortalwrt/immortalwrt
 
 # 添加对doornet2的支持
+![image](https://user-images.githubusercontent.com/84753324/159405974-454061ef-f78f-4670-938e-ac68e9f114f1.png)
+
+
 编译命令如下:
 -
 1. 首先装好 Ubuntu 64bit，推荐 Ubuntu 20.04 LTS x64
