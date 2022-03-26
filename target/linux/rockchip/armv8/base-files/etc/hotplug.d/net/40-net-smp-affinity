@@ -28,6 +28,7 @@ set_interface_core() {
 }
 
 case "$(board_name)" in
+embedfire,doornet2|\
 friendlyarm,nanopi-r2c|\
 friendlyarm,nanopi-r2s|\
 xunlong,orangepi-r1-plus|\
@@ -40,4 +41,3 @@ friendlyarm,nanopi-r4s)
 	set_interface_core 20 "eth1"
 	;;
 esac
-
