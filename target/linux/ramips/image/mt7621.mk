@@ -276,6 +276,15 @@ define Device/buffalo_wsr-600dhp
 endef
 TARGET_DEVICES += buffalo_wsr-600dhp
 
+define Device/bolt_arion
+  $(Device/uimage-lzma-loader)
+  IMAGE_SIZE := 32448k
+  DEVICE_VENDOR := BOLT
+  DEVICE_MODEL := Arion
+  DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 uboot-envtools
+endef
+TARGET_DEVICES += bolt_arion
+
 define Device/cudy_wr1300
   IMAGE_SIZE := 15872k
   DEVICE_VENDOR := Cudy
@@ -782,6 +791,22 @@ define Device/iptime_a3004ns-dual
 endef
 TARGET_DEVICES += iptime_a3004ns-dual
 
+define Device/iptime_a3004t
+  $(Device/uimage-lzma-loader)
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  FILESYSTEMS := squashfs
+  KERNEL_SIZE := 4096k
+  IMAGE_SIZE := 129280k
+  UIMAGE_NAME := a3004t
+  UBINIZE_OPTS := -E 5
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+  DEVICE_VENDOR := ipTIME
+  DEVICE_MODEL := A3004T
+  DEVICE_PACKAGES := kmod-mt7615e kmod-mt7615-firmware kmod-usb3
+endef
+TARGET_DEVICES += iptime_a3004t
+
 define Device/iptime_a6004ns-m
   IMAGE_SIZE := 16128k
   UIMAGE_NAME := a6004nm
@@ -810,6 +835,20 @@ define Device/iptime_a8004t
   DEVICE_PACKAGES := kmod-mt7615e kmod-mt7615-firmware kmod-usb3
 endef
 TARGET_DEVICES += iptime_a8004t
+
+define Device/iptime_t5004
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  KERNEL_SIZE := 4096k
+  IMAGE_SIZE := 129280k
+  UBINIZE_OPTS := -E 5
+  UIMAGE_NAME := t5004
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+  DEVICE_VENDOR := ipTIME
+  DEVICE_MODEL := T5004
+  DEVICE_PACKAGES := -wpad-openssl
+endef
+TARGET_DEVICES += iptime_t5004
 
 define Device/jcg_jhr-ac876m
   IMAGE_SIZE := 16064k
@@ -1273,6 +1312,15 @@ define Device/netis_wf2881
 endef
 TARGET_DEVICES += netis_wf2881
 
+define Device/oraybox_x3a
+  $(Device/uimage-lzma-loader)
+  IMAGE_SIZE := 15360k
+  DEVICE_VENDOR := OrayBox
+  DEVICE_MODEL := X3A
+  DEVICE_PACKAGES := kmod-mt7615e kmod-mt7615-firmware
+endef
+TARGET_DEVICES += oraybox_x3a
+
 define Device/phicomm_k2p
   IMAGE_SIZE := 15744k
   DEVICE_VENDOR := Phicomm
@@ -1571,6 +1619,15 @@ define Device/wavlink_wl-wn531a6
   IMAGE_SIZE := 15040k
 endef
 TARGET_DEVICES += wavlink_wl-wn531a6
+
+define Device/wavlink_wl-wn533a8
+  DEVICE_VENDOR := Wavlink
+  DEVICE_MODEL := WL-WN533A8
+  KERNEL_INITRAMFS_SUFFIX := -WN533A8$$(KERNEL_SUFFIX)
+  DEVICE_PACKAGES := kmod-mt7615e kmod-mt7615-firmware kmod-usb3
+  IMAGE_SIZE := 15040k
+endef
+TARGET_DEVICES += wavlink_wl-wn533a8
 
 define Device/wevo_11acnas
   $(Device/uimage-lzma-loader)

@@ -106,6 +106,10 @@ netgear,r7450)
 	ucidef_set_led_netdev "lan3" "LAN3" "white:lan3" "lan3"
 	ucidef_set_led_netdev "lan4" "LAN4" "white:lan4" "lan4"
 	;;
+oraybox,x3a)
+	ucidef_set_led_netdev "wan" "wan link" "red:status" "wan"
+	ucidef_set_led_netdev "lan" "lan link" "green:status" "br-lan"
+	;;
 tplink,archer-a6-v3|\
 tplink,archer-c6-v3|\
 tplink,archer-c6u-v1)
@@ -125,7 +129,7 @@ tplink,re650-v1)
 	;;
 tplink,tl-wpa8631p-v3)
 	ucidef_set_led_netdev "lan" "LAN" "green:lan" "br-lan"
-	;
+	;;
 xzwifi,creativebox-v1)
 	ucidef_set_led_netdev "internet" "internet" "blue:internet" "wan"
 	;;
