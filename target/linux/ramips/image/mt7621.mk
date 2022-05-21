@@ -303,6 +303,15 @@ define Device/cudy_wr2100
 endef
 TARGET_DEVICES += cudy_wr2100
 
+define Device/cudy_x6
+  IMAGE_SIZE := 32256k
+  DEVICE_VENDOR := Cudy
+  DEVICE_MODEL := X6
+  UIMAGE_NAME := R13
+  DEVICE_PACKAGES := kmod-mt7915e
+endef
+TARGET_DEVICES += cudy_x6
+
 define Device/dlink_dir-8xx-a1
   IMAGE_SIZE := 16064k
   DEVICE_VENDOR := D-Link
@@ -1357,6 +1366,7 @@ endef
 TARGET_DEVICES += raisecom_msg1500-x-00
 
 define Device/samknows_whitebox-v8
+  $(Device/uimage-lzma-loader)
   IMAGE_SIZE := 16064k
   DEVICE_VENDOR := SamKnows
   DEVICE_MODEL := Whitebox 8
@@ -1379,6 +1389,21 @@ define Device/sercomm_na502
   DEVICE_PACKAGES := kmod-mt76x2 kmod-mt7603 kmod-usb3
 endef
 TARGET_DEVICES += sercomm_na502
+
+define Device/sercomm_na502s
+  $(Device/uimage-lzma-loader)
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  IMAGE_SIZE := 20971520
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+  UBINIZE_OPTS := -E 5
+  KERNEL_SIZE := 4096k
+  DEVICE_VENDOR := SERCOMM
+  DEVICE_MODEL := NA502S
+  DEVICE_PACKAGES := kmod-mt76x2 kmod-mt7603 kmod-usb3 kmod-usb-serial \
+  		kmod-usb-serial-xr_usb_serial_common
+endef
+TARGET_DEVICES += sercomm_na502s
 
 define Device/storylink_sap-g3200u3
   IMAGE_SIZE := 7872k
